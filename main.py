@@ -12,15 +12,17 @@ def operate(operation):
     num_1 = random.randint(1, 10)
     num_2 = random.randint(1, 10)
     answer = operators.get(operation)(num_1, num_2)
+    
     return answer,num_1,num_2
 
 def random_problem():
-    
-
-    
+ 
     operation = random.choice(list(operators.keys()))
-
     answer,num_1,num_2 = operate(operation)
+
+    while (operation=='/' and num_1<num_2) or (operation=='/' and answer!=num_1//num_2):
+        print(str(answer))
+        answer,num_1,num_2 = operate(operation)
     
     print(f'What is {num_1} {operation} {num_2}')
     return answer
