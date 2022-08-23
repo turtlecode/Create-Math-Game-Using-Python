@@ -1,25 +1,38 @@
 import random
 import operator
 
-def random_problem():
-    operators = {
+operators = {
         '+': operator.add,
         '-': operator.sub,
         '*': operator.mul,
         '/': operator.truediv,
     }
 
+def operate(operation):
     num_1 = random.randint(1, 10)
     num_2 = random.randint(1, 10)
-
-    operation = random.choice(list(operators.keys()))
     answer = operators.get(operation)(num_1, num_2)
+    return answer,num_1,num_2
+
+def random_problem():
+    
+
+    
+    operation = random.choice(list(operators.keys()))
+
+    answer,num_1,num_2 = operate(operation)
+    
     print(f'What is {num_1} {operation} {num_2}')
     return answer
 
 def ask_question():
     answer = int(random_problem())
-    guess = float(input('Enter you answer: '))
+    try:
+        guess = int(input('Enter you answer: '))
+    except:
+        print('It is not an integer!')
+        return False
+
     return guess == answer
 
 def game():
