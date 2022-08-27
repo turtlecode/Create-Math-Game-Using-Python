@@ -1,3 +1,6 @@
+#This version implements an Issue 24.8.22 improvements
+
+
 import random
 import operator
 
@@ -13,8 +16,9 @@ def chooseNum():
     num_2 = random.randint(1, 10)
     return num_1,num_2
 
+
 def operate(operation):
-    
+    #The operation operator.truediv must compute only integers
     pureInt=True
     while pureInt:
         num_1,num_2=chooseNum()
@@ -35,6 +39,7 @@ def random_problem():
     print(f'What is {num_1} {operation} {num_2}')
     return answer
 
+# The answer and quess are both int() type
 def ask_question():
     answer = int(random_problem())
     try:
